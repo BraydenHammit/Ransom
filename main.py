@@ -21,11 +21,13 @@ def disable(_):
     except:None
 
 topframe = tk.Frame(root,bg='#E51A1A',borderwidth=0,highlightthickness=0)
-ransom = tk.Label(topframe,image=images['a90'],bg='black')
+ransom = tk.Label(topframe,image=images['a90'],bg='black',borderwidth=0,highlightthickness=0)
 txt1 = tk.Label(topframe,text='YOUR ITEMS\nHAVE BEEN\nENCRYPTED',font=('Helvetica Bold',40),bg='#E51A1A',fg='white')
+midframe = tk.Frame(root,bg='#000000',highlightcolor='white')
 
 topframe.pack()
 ransom.pack(side=tk.LEFT)
 txt1.pack(side=tk.RIGHT,padx=20)
+midframe.pack(pady=10)
 root.bind('<q>',disable)
 root.mainloop()
