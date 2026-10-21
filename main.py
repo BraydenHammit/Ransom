@@ -28,8 +28,10 @@ if ok == True:
 
     timeM = 1
     timeS = 30
+    remgold = 500
     images = {
-        'a90': tk.PhotoImage(file='ext/a90.png')
+        'a90': tk.PhotoImage(file='ext/a90.png'),
+        'gold': tk.PhotoImage(file='ext/gold.png')
     }
 
     def disable(_):
@@ -60,6 +62,8 @@ if ok == True:
     txt3 = tk.Label(midframe,text='UNRECOVERABLE BY ANY MEANS.',font=('Helvetica Bold',20,'bold'),bg='#000000',fg='red')
     bttmframe = tk.Frame(root,bg='#E51A1A',borderwidth=0,highlightthickness=0)
     goldframe = tk.Frame(bttmframe,bg='#000000',highlightcolor='yellow',highlightthickness=2)
+    goldam = tk.Label(goldframe,fg='yellow',bg="#000000",text=remgold,font=('Helvetica Bold',30,"bold"))
+    goldbt = tk.Button(goldframe,image=images['gold'],bg="#000000",borderwidth=0,highlightthickness=0)
     timer = tk.Label(bttmframe,fg='black',bg="#FA0000",text=f'TIME:    {timeM}:{timeS}',font=('Helvetica Bold',30,"bold"),highlightcolor='black',highlightthickness=2)
 
     topframe.pack()
@@ -70,6 +74,8 @@ if ok == True:
     txt3.pack()
     bttmframe.pack(pady=10)
     goldframe.pack(side=tk.LEFT)
+    goldam.pack(side=tk.LEFT)
+    goldbt.pack(side=tk.RIGHT)
     timer.pack(side=tk.RIGHT,padx=20)
     root.bind('<q>',disable)
     root.bind("<Leave>", mouse)
