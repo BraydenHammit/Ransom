@@ -31,7 +31,7 @@ if ok == True:
     remgold = 500
     images = {
         'a90': tk.PhotoImage(file='ext/a90.png'),
-        'gold': tk.PhotoImage(file='ext/gold.png')
+        'gold': tk.PhotoImage(file='ext/gold.png').subsample(3,3)
     }
 
     def disable(_):
