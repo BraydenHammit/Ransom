@@ -94,7 +94,6 @@ def run():
     goldam.pack(side=tk.LEFT)
     goldbt.pack(side=tk.RIGHT)
     timer.pack(side=tk.RIGHT,padx=20)
-    root.bind('<q>',disable)
     root.bind("<Leave>", mouse)
     root.after(1000,time)
     root.mainloop()
