@@ -41,6 +41,24 @@ if ok == True:
         try:root.attributes('-toolwindow', False)
         except:None
 
+    def time():
+        global timeM, timeS
+        timeS -= 1
+        if timeS < 1:
+            timeM -= 1
+            timeS = 59
+        if timeM <= 0 and timeS <= 0:
+            jumpscare()
+        else:
+            if timeS < 10:
+                timer.configure(text=f'TIME:    {timeM}:0{timeS}')
+            else:
+                timer.configure(text=f'TIME:    {timeM}:{timeS}')
+            root.after(1000,time)
+
+    def jumpscare():
+        None
+
     def mouse(event):
         root.update_idletasks()
         x = root.winfo_rootx()
@@ -79,4 +97,5 @@ if ok == True:
     timer.pack(side=tk.RIGHT,padx=20)
     root.bind('<q>',disable)
     root.bind("<Leave>", mouse)
+    root.after(1000,time)
     root.mainloop()
