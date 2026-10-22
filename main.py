@@ -1,4 +1,7 @@
 import tkinter as tk
+from code import run
+import random as ran
+import time as t
 
 def okey(tf):
     global ok
@@ -17,6 +20,10 @@ nokbutton.pack()
 root.mainloop()
 
 if ok == True:
+    #while True:
+    #    run()
+    #    t.sleep(ran.randint(30,300))
+
     root = tk.Tk()
     root.title('RANSOM.EXE')
     root.protocol("WM_DELETE_WINDOW", lambda: None)
@@ -41,15 +48,27 @@ if ok == True:
         try:root.attributes('-toolwindow', False)
         except:None
 
+    def gold():
+        global remgold
+        remgold -= 1
+        if remgold < 10:
+            goldam.configure(text=f'00{remgold}')
+        elif remgold < 100:
+            goldam.configure(text=f'0{remgold}')
+        else:
+            goldam.configure(text=remgold)
+        if remgold <= 0:
+            win()
+
     def time():
         global timeM, timeS
-        timeS -= 1
-        if timeS < 1:
-            timeM -= 1
-            timeS = 59
-        if timeM <= 0 and timeS <= 0:
+        if (timeM <= 0) and (timeS <= 0):
             jumpscare()
         else:
+            timeS -= 1
+            if timeS == -1:
+                timeM -= 1
+                timeS = 59
             if timeS < 10:
                 timer.configure(text=f'TIME:    {timeM}:0{timeS}')
             else:
@@ -57,7 +76,10 @@ if ok == True:
             root.after(1000,time)
 
     def jumpscare():
-        None
+        root.destroy()
+
+    def win():
+        root.destroy()
 
     def mouse(event):
         root.update_idletasks()
@@ -81,7 +103,7 @@ if ok == True:
     bttmframe = tk.Frame(root,bg='#E51A1A',borderwidth=0,highlightthickness=0)
     goldframe = tk.Frame(bttmframe,bg='#000000',highlightcolor='yellow',highlightthickness=2)
     goldam = tk.Label(goldframe,fg='yellow',bg="#000000",text=remgold,font=('Helvetica Bold',30,"bold"))
-    goldbt = tk.Button(goldframe,image=images['gold'],bg="#000000",borderwidth=0,highlightthickness=0)
+    goldbt = tk.Button(goldframe,command=gold,image=images['gold'],bg="#000000",borderwidth=0,highlightthickness=0)
     timer = tk.Label(bttmframe,fg='black',bg="#FA0000",text=f'TIME:    {timeM}:{timeS}',font=('Helvetica Bold',30,"bold"),highlightcolor='black',highlightthickness=2)
 
     topframe.pack()
