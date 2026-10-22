@@ -51,7 +51,8 @@ def run():
             root.after(1000,time)
 
     def jumpscare():
-        root.destroy()
+        #open lose window
+        disable()
 
     def win():
         #open win window
