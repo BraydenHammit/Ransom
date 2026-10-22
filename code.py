@@ -26,7 +26,7 @@ def run():
         except:None
 
     def gold():
-        global remgold
+        nonlocal remgold
         remgold -= 1
         if remgold < 10:
             goldam.configure(text=f'00{remgold}')
@@ -38,7 +38,7 @@ def run():
             win()
 
     def time():
-        global timeM, timeS
+        nonlocal timeM, timeS
         if (timeM <= 0) and (timeS <= 0):
             jumpscare()
         else:
