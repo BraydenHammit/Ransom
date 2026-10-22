@@ -4,7 +4,6 @@ def run():
     root = tk.Tk()
     root.title('RANSOM.EXE')
     root.protocol("WM_DELETE_WINDOW", lambda: None)
-    #root.attributes('-fullscreen', True)
     root.config(bg='#E51A1A')
     root.wm_attributes("-topmost", True)
     try:root.attributes('-toolwindow', True)
@@ -18,9 +17,8 @@ def run():
         'gold': tk.PhotoImage(file='ext/gold.png').subsample(3,3)
     }
 
-    def disable(_):
+    def disable():
         root.protocol("WM_DELETE_WINDOW", root.destroy)
-        #root.attributes('-fullscreen', False)
         root.wm_attributes("-topmost", False)
         try:root.attributes('-toolwindow', False)
         except:None
@@ -56,7 +54,8 @@ def run():
         root.destroy()
 
     def win():
-        root.destroy()
+        #open win window
+        disable()
 
     def mouse(event):
         root.update_idletasks()
