@@ -1,6 +1,6 @@
 import random as ran
 import time as t
-from code import run
+from code_run import run
 
 while True:
     run()

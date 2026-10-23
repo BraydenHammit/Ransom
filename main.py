@@ -1,7 +1,7 @@
 import tkinter as tk
 import random as ran
 import time as t
-from code import run
+from code_run import run
 
 def okey(tf):
     global ok
