@@ -2,7 +2,7 @@ import tkinter as tk
 
 def run():
     root = tk.Tk()
-    root.title('RANSOM.EXE')
+    root.title('ransom.exe')
     root.protocol("WM_DELETE_WINDOW", lambda: None)
     root.config(bg='#E51A1A')
     root.wm_attributes("-topmost", True)
@@ -11,16 +11,19 @@ def run():
 
     timeM = 1
     timeS = 30
-    remgold = 500
+    remgold = 10
     images = {
         'a90': tk.PhotoImage(file='ext/a90.png'),
         'gold': tk.PhotoImage(file='ext/gold.png').subsample(3,3),
-        'jumpscare': tk.PhotoImage(file='ext/jumpscare.png').zoom(4, 4)
+        'jumpscare': tk.PhotoImage(file='ext/jumpscare.png').zoom(4, 4),
+        'win': tk.PhotoImage(file='ext/win.png').zoom(2, 2)
     }
 
     def disable():
+        def na(n=None): None
         root.protocol("WM_DELETE_WINDOW", root.destroy)
         root.wm_attributes("-topmost", False)
+        root.bind('<Leave>',na)
         try:root.attributes('-toolwindow', False)
         except:None
 
@@ -69,7 +72,20 @@ def run():
         disable()
 
     def win():
-        #open win window
+        nonlocal topframe, ransom, txt1, midframe, txt2, txt3, bttmframe, goldframe, goldbt, goldam, timer, root
+        topframe.pack_forget()
+        ransom.pack_forget()
+        txt1.pack_forget()
+        midframe.pack_forget()
+        txt2.pack_forget()
+        txt3.pack_forget()
+        bttmframe.pack_forget()
+        goldframe.pack_forget()
+        goldam.pack_forget()
+        goldbt.pack_forget()
+        timer.pack_forget()
+        win = tk.Label(root,image=images['win'])
+        win.pack(expand=True)
         disable()
 
     def mouse(event):
